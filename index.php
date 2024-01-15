@@ -1,5 +1,5 @@
 <?php
-    require __DIR__ . "/Animal.php";
+    require_once __DIR__ . "/Product.php";
 ?>
 
 <!DOCTYPE html>
@@ -12,8 +12,9 @@
 </head>
 <body>
     <?php
-        var_dump($dog);
-        var_dump($cat);
+    for($i=0; $i<sizeof($products); $i++){
+        var_dump($products[$i]);
+    }
     ?>
 </body>
 </html>
