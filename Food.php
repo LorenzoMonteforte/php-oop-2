@@ -8,8 +8,9 @@
         public $lifestage;
         public $breed;
         public $size;
+        public $src_img;
 
-        function __construct($name, $brand, $price, $nutritional_characteristics, $taste, $lifestage, $breed, $size){
+        function __construct($name, $brand, $price, $nutritional_characteristics, $taste, $lifestage, $breed, $size, $src_img){
             $this->name = $name;
             $this->brand = $brand;
             $this->price = $price;
@@ -18,6 +19,7 @@
             $this->lifestage = $lifestage;
             $this->breed = $breed;
             $this->size = $size;
+            $this->src_img = $src_img;
         }
 
         public function get_category(){
