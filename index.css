@@ -10,6 +10,10 @@
     margin-top: 0.5rem;
 }
 
+.marLef05rem{
+    margin-left: 0.5rem;
+}
+
 #cardsContainer{
     padding: 3rem;
     display: flex;
@@ -51,4 +55,9 @@
 
 .card > table th {
     text-align: left;
+}
+
+.listPrice{
+    text-decoration: line-through;
+    font-size: 0.9rem;
 }

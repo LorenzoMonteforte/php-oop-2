@@ -1,5 +1,16 @@
 <?php
-    require_once __DIR__ . "/Product.php";
+    require __DIR__ . "/Product.php";
+    require __DIR__ . "/User.php";
+    $logged = false;
+    $index_user;
+    if(isset($_GET["email"]) && isset($_GET["password"])){
+        for($i=0; $i<sizeof($user); $i++){
+            if($user[$i]->email == $_GET["email"] && $user[$i]->password == $_GET["password"]){
+                $logged = true;
+                $index_user = $i;
+            }
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +22,20 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <?php
+        if($logged == false){
+            echo    '<form action="index.php">
+                        <input name="email" type="text" placeholder="Email">
+                        <input name="password" type="text" placeholder="Password">
+                        <input type="submit" value="Accedi">
+                    </form>';
+        }else{
+            echo 'Ciao ' . $user[$index_user]->name . " " . $user[$index_user]->surname;
+            echo    '<form action="index.php">
+                        <input type="submit" value="Esci">
+                    </form>'; 
+        }
+    ?>
     <div id="cardsContainer">
         <?php
             for($i=0; $i<sizeof($products); $i++){
@@ -25,8 +50,16 @@
                             <div class="marTop05rem">
                                 <span>Prezzo: </span>
                                 <span>
-                                    <strong>' . $products[$i]->category->price . '</strong>
-                                </span>
+                                    <strong';
+                if($logged == true){
+                    echo ' class="listPrice"';
+                }
+                echo                '>' . $products[$i]->category->price . '€</strong>';
+                if($logged == true){
+                    $discount = number_format($products[$i]->category->price  - ($products[$i]->category->price * 20 / 100), 2);
+                    echo '<strong class="marLef05rem">' . $discount . '€</strong>';
+                }
+                echo            '</span>
                             </div>';
                 if($products[$i]->category->get_category() == "Cibo"){
                     echo    '<table class="marTop05rem">';
